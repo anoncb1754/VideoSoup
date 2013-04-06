@@ -1,17 +1,50 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-{%for post in posts%}
+{% for post in posts %}
 <div class='row post'>
-	<div class='span12'>
-		<span class='rank'>{{ forloop.counter }}</span>
-		<h3><a href='{{ post.link }}'>{{ post.title }}</a></h3>
-		<span class='meta'><small>Posted by: {{ post.user }} on {{ post.date_created }} Labels: <span class="label label-inverse"><strong>{{ post.labels }}</strong>
+	<div class = 'span1 offset1'>
+		<span class='rank muted text-right'><h3>{{ forloop.counter0|add:posts.start_index }}</h3></span>
+	</div>
+
+	<div class='span9'>
+		<h3><a href='{{ post.1.link }}'>{{ post.title }}</a></h3>
+		<span class='meta'><small>Posted by: {{ post.user }} on {{ post.date_created }}, <a class="share btn btn-warning btn-mini"  rel="popover">Share</a> Labels: <span class="label label-inverse"><strong>{{ post.labels }}</strong>
 		</span></small></span>
+
 	</div>
 </div>
 
+{% endfor %}
 
-{%endfor%}
+<script>
+var shareContent = '<div>Like it on Facebook: <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.videosoup.de&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;font=arial&amp;colorscheme=light&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:21px;" allowTransparency="true"></iframe></div><div><a class="close-share btn btn-link" onclick="$(&quot;.share&quot;).popover(&quot;hide&quot;);">Close</a></div>'
+
+/*'''<div><div class=\fb-like\ data-href=\http://www.videosoup.de\ data-send=\false\ data-layout=\button_count\ data-width=\450\ data-show-faces=\false\></div></div>'''*/
+
+$('.share').popover({title: "Share this post!", content: shareContent, html: true});
+
+</script>
+
+
+<script>
+$('.close-share').popover('destroy');
+</script>
+
+<div class="span12">
+        <span class="step-links">
+      
+            {% if posts.has_previous %}
+                <a href="?page={{ posts.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+            </span>
+
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+</div>
 {% endblock %}

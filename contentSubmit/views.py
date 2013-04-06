@@ -43,23 +43,6 @@ def contentSubmit(request):
 			{'form': form})
 
 
-def frontPage(request):
-	results = Post.objects.filter(status='Online').order_by('-date_created')
-	paginator = Paginator(results, 10) # Show 25 contacts per page
-	page = request.GET.get('page')
-
-	try:
-		posts = paginator.page(page)
-	except PageNotAnInteger:
-		# If page is not an integer, deliver first page.
-		posts = paginator.page(1)
-	except EmptyPage:
-		# If page is out of range (e.g. 9999), deliver last page of results.
-		posts = paginator.page(paginator.num_pages)
-
-	return render_to_response('index.html', {'posts': posts})
-
-
 def manageContent(request):
 	'''
 	Query all posts with all states of the user.

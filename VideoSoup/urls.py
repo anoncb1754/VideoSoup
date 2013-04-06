@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from contentSubmit import views
 from userHandling import views as user_views
+from lists import views as list_views
 from django.contrib.auth.views import login
 from django.conf import settings
 
@@ -12,7 +13,7 @@ urlpatterns = patterns('',
 	(r'^submit/$', views.contentSubmit),
 	(r'^signup/$', user_views.signup),
 	(r'^accounts/login/$', 'django.contrib.auth.views.login'),
-    (r'^$', views.frontPage),
+    (r'^$', list_views.latest),
     (r'^my_posts/$', views.manageContent),
 	
 
