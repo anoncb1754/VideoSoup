@@ -13,47 +13,6 @@ from django.contrib.auth import authenticate
 import urllib2
 
 
-'''
-todo:
-
-
--Design & Layout
--Label Management: Make all labels lowercase (DONE)
-
-Put all labels into a table called labels,
-Check if label already exists, if not then insert into db table. Call label using foreign key.
-Display with bootstrap badges.
-
-MAke all labels linked 
-
--Ranks & Sorting -->DONE
-
--Paginator for start page --> DONE
--activate Admin page --> DONE
--AGB, Datenschutz etc.
-
-
---> Release 0.1
-
--Submit by users 
--User login and registration
---Registration
---Post Manager for User
---Request content from url via python or js
---Check if url is okay.
-
---> Release 0.2
-
---Ranking algorithm
---simple blog
-
--->Release 0.3
---YouTube API bot
---ZDF bot
---ARD bot
---ContentManagerBot
-
-'''
 
 
 def contentSubmit(request):
@@ -110,6 +69,7 @@ def manageContent(request):
 	print user
 	my_posts = Post.objects.filter(user=user)
 	print my_posts
+	print 'Hello World'
 	return HttpResponse('ManageContent')
 
 def _getContentFromURL():
