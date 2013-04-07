@@ -11,6 +11,7 @@
     <!-- Le styles -->
 
     <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "customCSS/custom.css" %}" rel="stylesheet">
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -34,12 +35,16 @@
     });
     </script>
 
+    <style type="text/css">
+      
+    </style>
+
     
   </head>
 
   <body>
 
-
+<div id="wrap">
   <div class="container">
     <div class="row">
       <div class="span12">
@@ -63,15 +68,16 @@
     {% block content %}
     {% endblock %}
      
-    
+</div><!--END wrap-->     
   
-    <footer class="footer">
+    <footer id="footer">
       <div class="container">
+      </br> 
         
 
-        <div class="span3 muted"><a href='#'><small>Impressum/Imprint</small></a></div>
-        <div class="span3 muted"><a href='#'><small>Datenschutz/Data Privacy</small></a></div>
-        <div class="span3 muted"><a href='#'><small>AGBs/Terms of Conditions</small></a></div>
+        <div class="span2 offset3 muted"><a href="{%url 'miscPages.views.imprint' %}"><small>Impressum</small></a></div>
+        <div class="span2 muted"><a href="{%url 'miscPages.views.privacyPolicy' %}"><small>Datenschutz</small></a></div>
+        <div class="span2 muted"><a href="{%url 'miscPages.views.AGB' %}" ><small>AGB</small></a></div>
       </div>
    
     </footer>
