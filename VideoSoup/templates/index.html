@@ -51,7 +51,7 @@
 
 	<div class='span9'>
 		<h3><a href='{{ post.link }}'>{{ post.title }}</a></h3>
-		<span class='meta'><small>Posted by: {{ post.user }} on {{ post.date_created }}, <a class="share btn btn-warning btn-mini"  rel="popover">Share</a> Labels: 
+		<span class='meta'><small>Posted <span class="post-date" title="{{ post.date_created|date:"D d M Y" }} {{ post.date_created|time:"TIME_FORMAT" }}">{{ post.date_created }} ago</span> by {{ post.user }} <a class="share btn btn-warning btn-mini"  rel="popover">Share</a> Labels: 
 			
 			{% for labels in label_set %}
 			<a class ='btn btn-inverse btn-mini' href="/label_search/?label={{ labels }}">{{ labels }}</a>
@@ -85,7 +85,7 @@ $('.close-share').popover('destroy');
 	        <span class="step-links">
 	      
 	            {% if posts.has_previous %}
-	                <a href="?page={{ posts.previous_page_number }}&catid={{ catid }}">previous</a>
+	                <a href="?page={{ posts.previous_page_number }}&catid={{ catid }}&label={{ label }}">previous</a>
 	            {% endif %}
 
 	            <span class="current">
@@ -93,7 +93,7 @@ $('.close-share').popover('destroy');
 	            </span>
 
 	            {% if posts.has_next %}
-	                <a href="?page={{ posts.next_page_number }}&catid={{ catid }}">next</a>
+	                <a href="?page={{ posts.next_page_number }}&catid={{ catid }}&label={{ label }}">next</a>
 	            {% endif %}
 	        </span>
 	</div>

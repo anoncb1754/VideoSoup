@@ -91,7 +91,8 @@ def filterByLabel(request):
 		posts = paginator.page(paginator.num_pages)
 	return render_to_response('index.html', {'posts': posts,
 											'label_set': label_set,
-											'sub_title': sub_title})
+											'sub_title': sub_title,
+											'label': label})
 
 
 '''
