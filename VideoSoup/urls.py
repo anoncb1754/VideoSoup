@@ -3,6 +3,7 @@ from contentSubmit import views
 from userHandling import views as user_views
 from lists import views as list_views
 from miscPages import views as misc_views
+from clickTracker import views as click_tracker
 from django.contrib.auth.views import login
 from django.conf import settings
 
@@ -18,11 +19,10 @@ urlpatterns = patterns('',
     (r'^label_search/$', list_views.filterByLabel),
     (r'^category/$', list_views.category),
     (r'^my_posts/$', views.manageContent),
+    (r'^ct/$', click_tracker.clickTracker),
     (r'^impressum/$', misc_views.imprint),
     (r'^datenschutz/$', misc_views.privacyPolicy),
     (r'^agb/$', misc_views.AGB),
-    
-	
 
     # Examples:
     # url(r'^$', 'VideoSoup.views.home', name='home'),
