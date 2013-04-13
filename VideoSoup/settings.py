@@ -1,7 +1,7 @@
 # Django settings for VideoSoup project.
 import os
 import psycopg2
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
