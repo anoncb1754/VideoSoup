@@ -8,22 +8,22 @@
 	<div class ='span9 offset3'>
 		<ul class="nav nav-pills">
 	  		<li class='cat-all'>
-	    		<a href="{%url 'lists.views.latest' %}?catid=new_all">Neueste Videos</a>
+	    		<a href="{%url lists.views.latest %}?catid=new_all">Neueste Videos</a>
 	  		</li>
 	  		<li class='cat-zdf'>
-	  			<a href="{%url 'lists.views.category' %}?catid=ZDF">ZDF</a>
+	  			<a href="{%url lists.views.category %}?catid=ZDF">ZDF</a>
 	  		</li>
 	  		<li class='cat-ard'>
-	  			<a href="{%url 'lists.views.category' %}?catid=ARD">ARD</a>
+	  			<a href="{%url lists.views.category %}?catid=ARD">ARD</a>
 	  		</li>
 	  		<li class='cat-arte'>
-	  			<a href="{%url 'lists.views.category' %}?catid=ARTE">ARTE</a>
+	  			<a href="{%url lists.views.category %}?catid=ARTE">ARTE</a>
 	  		</li>
 	  		<li class='cat-youtube'>
-	  			<a href="{%url 'lists.views.category' %}?catid=YOUTUBE">YOUTUBE</a>
+	  			<a href="{%url lists.views.category %}?catid=YOUTUBE">YOUTUBE</a>
 	  		</li>
 	  		<li class='cat-sonstige'>
-	  			<a href="{%url 'lists.views.category' %}?catid=SONSTIGE">SONSTIGE</a>
+	  			<a href="{%url lists.views.category %}?catid=SONSTIGE">SONSTIGE</a>
 	  		</li>
 		</ul>
 	</div>
@@ -64,7 +64,7 @@
 	</div>
 
 	<div class='span9'>
-		<h3><a href="{%url 'clickTracker.views.clickTracker' %}?dst={{ post.link }}&id={{ post.id }}">{{ post.title }}</a></h3>
+		<h3><a href="{%url clickTracker.views.clickTracker %}?dst={{ post.link }}&id={{ post.id }}">{{ post.title }}</a></h3>
 		<span class="meta"><small>Posted <span class="post-date" title="{{ post.date_created|date:"D d M Y" }} {{ post.date_created|time:"TIME_FORMAT" }}">{{ post.date_created }} ago</span> by {{ post.user }} <a class="share btn btn-warning btn-mini"  rel="popover">Share</a> Labels: 
 			
 			{% for labels in label_set %}
