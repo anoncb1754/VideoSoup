@@ -63,7 +63,7 @@ STATIC_ROOT = '/static/'#'/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/s
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = 'http://floating-hamlet-2541.herokuapp.com/static/'
+STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -71,7 +71,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     #"/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static_stuff",
-    "http://floating-hamlet-2541.herokuapp.com/static_stuff/'",
+    "/static_stuff/",
 )
 
 # List of finder classes that know how to find static files in
