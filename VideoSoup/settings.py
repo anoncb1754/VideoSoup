@@ -1,5 +1,6 @@
 # Django settings for VideoSoup project.
 import os
+import psycopg2
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -11,11 +12,11 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', #'postgresql_psycopg2' # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'VideoSoup/database/vs.db.sqlite',                      # Or path to database file if using sqlite3. 
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',#'django.db.backends.sqlite3', #'postgresql_psycopg2' # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'videosoup',                      # Or path to database file if using sqlite3. 
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
@@ -31,6 +32,8 @@ TIME_ZONE = 'Europe/Berlin'
 LANGUAGE_CODE = 'de-DE'
 
 SITE_ID = 1
+
+ALLOWED_HOSTS = ['*']
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
