@@ -74,7 +74,7 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     #"/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static_stuff",
     #s.path.join(PROJECT_DIR,'static_stuff/'),
-    "/VideoSoup/static/",
+    "/VideoSoup/static_stuff/",
     #"/static_stuff/",
 )
 
