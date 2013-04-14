@@ -263,7 +263,7 @@ if PRODUCTION:
 
     # URL prefix for static files.
     # Example: "http://media.lawrence.com/static/"
-    STATIC_URL = 'http://floating-hamlet-2541.herokuapp.com/static/'
+    STATIC_URL = 'http://floating-hamlet-2541.herokuapp.com/VideoSoup/static/'
 
     print os.path.join(PROJECT_DIR,'static_stuff')
     # Additional locations of static files
