@@ -3,7 +3,7 @@ import os
 import psycopg2
 
 PRODUCTION = True
-DEBUG = True
+DEBUG = False
 
 ADMINS = (
     ('Carl Bednorz', 'carl.bednorz@gmail.com'),
