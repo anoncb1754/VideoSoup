@@ -189,7 +189,8 @@ if PRODUCTION == False:
         'django.contrib.messages.context_processors.messages',
     )
 
-
+from os import environ
+from urlparse import urlparse
 
 if PRODUCTION:
     
@@ -203,16 +204,19 @@ if PRODUCTION:
 
     print PROJECT_DIR
 
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',#'django.db.backends.sqlite3', #'postgresql_psycopg2' # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'videosoup',                      # Or path to database file if using sqlite3. 
-            'USER': '',                      # Not used with sqlite3.
-            'PASSWORD': '',                  # Not used with sqlite3.
-            'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+
+    if environ.has_key('DATABASE_URL'):
+        url = urlparse(environ['DATABASE_URL'])
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',#'django.db.backends.sqlite3', #'postgresql_psycopg2' # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+                'NAME': url.path[1:],                      # Or path to database file if using sqlite3. 
+                'USER': url.username,                      # Not used with sqlite3.
+                'PASSWORD': url.password,                  # Not used with sqlite3.
+                'HOST': url.hostname,                      # Set to empty string for localhost. Not used with sqlite3.
+                'PORT': url.port,                      # Set to empty string for default. Not used with sqlite3.
+            }
         }
-    }
 
     # Local time zone for this installation. Choices can be found here:
     # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
