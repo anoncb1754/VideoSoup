@@ -230,7 +230,7 @@ if PRODUCTION:
 
     SITE_ID = 1
 
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['http://floating-hamlet-2541.herokuapp.com']
 
     # If you set this to False, Django will make some optimizations so as not
     # to load the internationalization machinery.
