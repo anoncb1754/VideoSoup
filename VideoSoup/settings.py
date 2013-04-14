@@ -38,7 +38,7 @@ ALLOWED_HOSTS = ['*']
 #For Produciton
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-PROJECT_DIR = os.path.join(PROJECT_ROOT,'../VideoSoup')
+PROJECT_DIR = os.path.join(PROJECT_ROOT,'VideoSoup/')
 
 
 
