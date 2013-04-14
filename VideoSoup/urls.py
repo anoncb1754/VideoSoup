@@ -6,6 +6,7 @@ from miscPages import views as misc_views
 from clickTracker import views as click_tracker
 from django.contrib.auth.views import login
 from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -36,9 +37,12 @@ urlpatterns = patterns('',
 )
 
 
+if not settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+    )
 
 '''
-if not settings.DEBUG:
+if not settings.PRODUCTION:
    urlpatterns += staticfiles_urlpatterns()
-
 '''

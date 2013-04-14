@@ -3,7 +3,7 @@ import os
 import psycopg2
 
 PRODUCTION = True
-
+DEBUG = False
 
 ADMINS = (
     ('Carl Bednorz', 'carl.bednorz@gmail.com'),
@@ -13,7 +13,7 @@ MANAGERS = ADMINS
 
 #Development Settings
 if PRODUCTION == False:
-    DEBUG = True
+   
     TEMPLATE_DEBUG = DEBUG
 
     PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -72,7 +72,7 @@ if PRODUCTION == False:
     # Don't put anything in this directory yourself; store your static files
     # in apps' "static/" subdirectories and in STATICFILES_DIRS.
     # Example: "/home/media/media.lawrence.com/static/"
-    STATIC_ROOT = '/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static/'
+    #STATIC_ROOT = '/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static/'
     STATIC_ROOT = os.path.join(PROJECT_ROOT,'static/')
     print STATIC_ROOT
 
@@ -192,9 +192,16 @@ if PRODUCTION == False:
 
 
 if PRODUCTION:
-    DEBUG = False
+    
     TEMPLATE_DEBUG = DEBUG
 
+
+    PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+    print PROJECT_ROOT
+
+    PROJECT_DIR = PROJECT_ROOT
+
+    print PROJECT_DIR
 
     DATABASES = {
         'default': {
@@ -245,21 +252,24 @@ if PRODUCTION:
     # Don't put anything in this directory yourself; store your static files
     # in apps' "static/" subdirectories and in STATICFILES_DIRS.
     # Example: "/home/media/media.lawrence.com/static/"
-    STATIC_ROOT = '/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static/'
-
+    #STATIC_ROOT = '/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static/'
+    STATIC_ROOT = os.path.join(PROJECT_ROOT,'static/')
+    print STATIC_ROOT
 
 
     # URL prefix for static files.
     # Example: "http://media.lawrence.com/static/"
     STATIC_URL = '/static/'
 
+    print os.path.join(PROJECT_DIR,'static_stuff')
     # Additional locations of static files
     STATICFILES_DIRS = (
         # Put strings here, like "/home/html/static" or "C:/www/django/static".
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
-        "/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static_stuff",
-        #s.path.join(PROJECT_DIR,'static_stuff/'),
+        #"/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static_stuff",
+        os.path.join(PROJECT_DIR,'static_stuff'),
+        #os.path.join(PROJECT_DIR,'static_stuff/'),
         #"/VideoSoup/static_stuff/",
         #"/static_stuff/",
     )
