@@ -37,7 +37,7 @@ ALLOWED_HOSTS = ['*']
 
 #For Produciton
 
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = 'app/VideoSoup'#os.path.abspath(os.path.dirname(__file__))
 PROJECT_DIR = PROJECT_ROOT#os.path.join(PROJECT_ROOT,'VideoSoup/')
 
 
@@ -89,7 +89,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
