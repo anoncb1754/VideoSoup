@@ -35,6 +35,13 @@ SITE_ID = 1
 
 ALLOWED_HOSTS = ['*']
 
+#For Produciton
+
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+PROJECT_DIR = os.path.join(PROJECT_ROOT,'../VideoSoup')
+
+
+
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = True
@@ -59,7 +66,9 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/static/'#'/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static/'
+#STATIC_ROOT = '/static/'#'/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static/'
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT,'static/')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -71,7 +80,8 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     #"/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static_stuff",
-    "/static_stuff/",
+    os.path.join(PROJECT_DIR,'static_stuff/'),
+    #"/static_stuff/",
 )
 
 # List of finder classes that know how to find static files in
