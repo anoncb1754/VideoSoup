@@ -35,13 +35,6 @@ SITE_ID = 1
 
 ALLOWED_HOSTS = ['*']
 
-#For Produciton
-
-PROJECT_ROOT = 'VideoSoup/'#os.path.abspath(os.path.dirname(__file__))
-PROJECT_DIR = PROJECT_ROOT#os.path.join(PROJECT_ROOT,'VideoSoup/')
-
-
-
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = True
@@ -68,7 +61,7 @@ MEDIA_URL = ''
 # Example: "/home/media/media.lawrence.com/static/"
 #STATIC_ROOT = '/static/'#'/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static/'
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT,'static/')
+STATIC_ROOT = '/VideoSoup/static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -80,7 +73,8 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     #"/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static_stuff",
-    os.path.join(PROJECT_DIR,'static_stuff/'),
+    #s.path.join(PROJECT_DIR,'static_stuff/'),
+    "/VideoSoup/static/"
     #"/static_stuff/",
 )
 
@@ -89,7 +83,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
