@@ -37,6 +37,8 @@ urlpatterns = patterns('',
 
 
 
-
+'''
 if not settings.DEBUG:
    urlpatterns += staticfiles_urlpatterns()
+
+'''
