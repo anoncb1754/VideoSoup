@@ -263,7 +263,7 @@ if PRODUCTION:
 
     # URL prefix for static files.
     # Example: "http://media.lawrence.com/static/"
-    STATIC_URL = 'VideoSoup/static/'
+    STATIC_URL = ALLOWED_HOSTS + '/VideoSoup/static/'
 
     print os.path.join(PROJECT_DIR,'static_stuff')
     # Additional locations of static files
