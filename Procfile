@@ -1,1 +1,1 @@
-web: python myproject_django/manage.py collectstatic --noinput; gunicorn VideoSoup.wsgi
+web: gunicorn VideoSoup.wsgi

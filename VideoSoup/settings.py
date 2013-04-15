@@ -3,7 +3,7 @@ import os
 import psycopg2
 
 PRODUCTION = True
-DEBUG = False
+DEBUG = True
 
 ADMINS = (
     ('Carl Bednorz', 'carl.bednorz@gmail.com'),
@@ -254,25 +254,27 @@ if PRODUCTION:
     MEDIA_URL = ''
 
     #Amazon S3 Storage Stuff
-    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = 'VideoSoup'
-
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME')
+    AWS_PRELOAD_METADATA = True
+    
 
     # Absolute path to the directory static files should be collected to.
     # Don't put anything in this directory yourself; store your static files
     # in apps' "static/" subdirectories and in STATICFILES_DIRS.
     # Example: "/home/media/media.lawrence.com/static/"
     #STATIC_ROOT = '/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static/'
-    STATIC_ROOT = os.path.join(os.getcwd(), "VideoSoup/static")
+    #STATIC_ROOT = os.path.join(os.getcwd(), "VideoSoup/static")
     
 
 
     # URL prefix for static files.
     # Example: "http://media.lawrence.com/static/"
-    STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3-website-us-east-1.amazonaws.com'
+    STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3-website-us-east-1.amazonaws.com/static/'
     ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
     
