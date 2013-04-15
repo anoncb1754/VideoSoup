@@ -252,20 +252,29 @@ if PRODUCTION:
     # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
     MEDIA_URL = ''
 
+    #Amazon S3 Storage Stuff
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = 'VideoSoup'
+
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
     # Absolute path to the directory static files should be collected to.
     # Don't put anything in this directory yourself; store your static files
     # in apps' "static/" subdirectories and in STATICFILES_DIRS.
     # Example: "/home/media/media.lawrence.com/static/"
     #STATIC_ROOT = '/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static/'
     STATIC_ROOT = os.path.join(os.getcwd(), "VideoSoup/static")
-    print STATIC_ROOT
+    
 
 
     # URL prefix for static files.
     # Example: "http://media.lawrence.com/static/"
-    STATIC_URL = 'VideoSoup/static/'
+    STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3-website-us-east-1.amazonaws.com'
+    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
-    print os.path.join(PROJECT_DIR,'static_stuff')
+    
     # Additional locations of static files
     STATICFILES_DIRS = (
         # Put strings here, like "/home/html/static" or "C:/www/django/static".
