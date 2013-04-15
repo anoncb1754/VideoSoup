@@ -257,7 +257,7 @@ if PRODUCTION:
     # in apps' "static/" subdirectories and in STATICFILES_DIRS.
     # Example: "/home/media/media.lawrence.com/static/"
     #STATIC_ROOT = '/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static/'
-    STATIC_ROOT = os.path.join(PROJECT_ROOT,'static/')
+    STATIC_ROOT = os.path.join(os.getcwd(), "VideoSoup/static")
     print STATIC_ROOT
 
 
@@ -272,7 +272,8 @@ if PRODUCTION:
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
         #"/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static_stuff",
-        os.path.join(PROJECT_DIR,'static_stuff'),
+        STATICFILES_DIRS = ( os.path.abspath(__file__)+'/..'+'/VideoSoup/static'),
+        #os.path.join(PROJECT_DIR,'static_stuff'),
         #os.path.join(PROJECT_DIR,'static_stuff/'),
         #"/VideoSoup/static_stuff/",
         #"/static_stuff/",
@@ -374,11 +375,11 @@ if PRODUCTION:
     )
 
 
-    '''
+    
     # Parse database configuration from $DATABASE_URL
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()
 
     # Honor the 'X-Forwarded-Proto' header for request.is_secure()
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    '''
+    
