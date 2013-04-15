@@ -1,6 +1,9 @@
 # Django settings for VideoSoup project.
 import os
 import psycopg2
+from urlparse import urlparse
+from storages.backends.s3boto import S3BotoStorage
+
 
 PRODUCTION = True
 DEBUG = True
@@ -189,9 +192,7 @@ if PRODUCTION == False:
         'django.contrib.messages.context_processors.messages',
     )
 
-from os import environ
-from urlparse import urlparse
-import boto
+
 
 if PRODUCTION:
     
