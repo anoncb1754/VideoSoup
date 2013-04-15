@@ -2,8 +2,8 @@
 import os
 import psycopg2
 from urlparse import urlparse
-from storages.backends.s3boto import S3BotoStorage
-
+import storages
+import boto
 
 PRODUCTION = True
 DEBUG = True
