@@ -272,7 +272,7 @@ if PRODUCTION:
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
         #"/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static_stuff",
-        STATICFILES_DIRS = ( os.path.abspath(__file__)+'/..'+'/VideoSoup/static'),
+        STATICFILES_DIRS = os.path.abspath(__file__)+'/..'+'/VideoSoup/static',
         #os.path.join(PROJECT_DIR,'static_stuff'),
         #os.path.join(PROJECT_DIR,'static_stuff/'),
         #"/VideoSoup/static_stuff/",
