@@ -263,7 +263,7 @@ if PRODUCTION:
 
     # URL prefix for static files.
     # Example: "http://media.lawrence.com/static/"
-    STATIC_URL = 'http://floating-hamlet-2541.herokuapp.com/VideoSoup/static/'
+    STATIC_URL = '/static/'
 
     print os.path.join(PROJECT_DIR,'static_stuff')
     # Additional locations of static files
@@ -272,7 +272,7 @@ if PRODUCTION:
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
         #"/Users/cb1754/Documents/Projects/VideoSoup/VideoSoup/static_stuff",
-        os.path.abspath(__file__)+'/..'+'/VideoSoup/static',
+        os.path.abspath(__file__)+'/..'+'/static_stuff',
         #os.path.join(PROJECT_DIR,'static_stuff'),
         #os.path.join(PROJECT_DIR,'static_stuff/'),
         #"/VideoSoup/static_stuff/",
