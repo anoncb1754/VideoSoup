@@ -1,3 +1,4 @@
 
 *.sqlite
 *.pyc
+VideoSoup/static_stuff/*
