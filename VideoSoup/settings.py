@@ -2,12 +2,10 @@
 import os
 import psycopg2
 from urlparse import urlparse
-
-'''
-
+from os import environ
 import storages
 import boto
-'''
+
 PRODUCTION = True
 DEBUG = True
 
