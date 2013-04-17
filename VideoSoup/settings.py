@@ -198,8 +198,6 @@ if PRODUCTION == False:
 if PRODUCTION:
     
     TEMPLATE_DEBUG = DEBUG
-
-
     PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
     print PROJECT_ROOT
 
@@ -207,7 +205,7 @@ if PRODUCTION:
 
     print PROJECT_DIR
 
-
+    
     if environ.has_key('DATABASE_URL'):
         url = urlparse(environ['DATABASE_URL'])
         DATABASES = {
@@ -220,6 +218,20 @@ if PRODUCTION:
                 'PORT': url.port,                      # Set to empty string for default. Not used with sqlite3.
             }
         }
+    
+
+    '''
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',#'django.db.backends.sqlite3', #'postgresql_psycopg2' # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+                'NAME': 'videosoup',                      # Or path to database file if using sqlite3. 
+                'USER': '',                      # Not used with sqlite3.
+                'PASSWORD': '',                  # Not used with sqlite3.
+                'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
+                'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+            }
+        }
+    '''
 
     # Local time zone for this installation. Choices can be found here:
     # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -259,10 +271,14 @@ if PRODUCTION:
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
+    
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME')
     AWS_PRELOAD_METADATA = True
+    
+
+    
     
 
     # Absolute path to the directory static files should be collected to.
@@ -276,7 +292,8 @@ if PRODUCTION:
 
     # URL prefix for static files.
     # Example: "http://media.lawrence.com/static/"
-    STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3-website-us-east-1.amazonaws.com/static/'
+    STATIC_URL = "https://s3.amazonaws.com/videosoup-assets/static/"
+    #STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3-website-us-east-1.amazonaws.com/static/'
     ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
     
@@ -302,7 +319,8 @@ if PRODUCTION:
     )
 
     # Make this unique, and don't share it with anybody.
-    SECRET_KEY = '!kifa*ar%_o5vd3d*cr*arx0j28pe%saz9nkcqof=w*@a69#m%'
+    SECRET_KEY = os.environ.get('SECRET_DJANGO_KEY')
+    
 
     # List of callables that know how to import templates from various sources.
     TEMPLATE_LOADERS = (
@@ -344,7 +362,7 @@ if PRODUCTION:
         'userHandling', 
         'lists',
         'clickTracker',
-        'storages'
+        'storages',
         # Uncomment the next line to enable the admin:
         'django.contrib.admin',
         # Uncomment the next line to enable admin documentation:
