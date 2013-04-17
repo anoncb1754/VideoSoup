@@ -7,7 +7,7 @@ import storages
 import boto
 
 PRODUCTION = True
-DEBUG = True
+DEBUG = False
 
 ADMINS = (
     ('Carl Bednorz', 'carl.bednorz@gmail.com'),
