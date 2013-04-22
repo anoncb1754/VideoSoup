@@ -6,6 +6,8 @@ from os import environ
 import storages
 import boto
 
+
+#Settings
 PRODUCTION = True
 DEBUG = False
 
