@@ -1,4 +1,10 @@
 # Django settings for VideoSoup project.
+
+'''
+Release 0.1
+'''
+
+
 import os
 import psycopg2
 from urlparse import urlparse
