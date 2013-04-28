@@ -7,6 +7,7 @@ from clickTracker import views as click_tracker
 from django.contrib.auth.views import login
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic import TemplateView
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -24,6 +25,7 @@ urlpatterns = patterns('',
     (r'^impressum/$', misc_views.imprint),
     (r'^datenschutz/$', misc_views.privacyPolicy),
     (r'^agb/$', misc_views.AGB),
+    (r'^ct_test/$', list_views.mostViewed),
 
     # Examples:
     # url(r'^$', 'VideoSoup.views.home', name='home'),
@@ -36,6 +38,15 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 )
 
+urlpatterns += patterns('',
+    (r'^robots\.txt$', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
+)
+
+
+
+
+
+#To be deleted?
 '''
 
 if not settings.DEBUG:

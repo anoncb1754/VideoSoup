@@ -3,18 +3,19 @@
 <html lang="de">
   <head>
     <meta charset="utf-8">
-    <title>Video Soup - Die besten deutschen Video Clips, Serien, Filme und Dokumentationen.</title>
+    <title>Video Soup - Filme, Serien und Video Clips auf einen Blick.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Videosoup.de bietet eine Uebersicht frei zugaenglicher Filme, Serien und Video Clips aus Mediatheken und Videoportalen">
+    <meta name="keywords" content="videosoup, videos, clips, mediathek">
 
     <!-- Le styles -->
+    <link rel="shortcut icon" href="{% static "favicon/favicon.ico" %}" type="image/x-icon" />
 
     <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
     <link href="{% static "customCSS/custom.css" %}" rel="stylesheet">
     <style>
       body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        padding-top: 20px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
     <link href="{% static "bootstrap/css/bootstrap-responsive.css" %}" rel="stylesheet">
@@ -49,8 +50,27 @@
 
   <body>
 
+<div class="row" style="background: yellow;">
+      <div class="span6 offset7">
+        <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style ">
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        <a class="addthis_button_tweet"></a>
+        <a class="addthis_button_pinterest_pinit"></a>
+        <a class="addthis_counter addthis_pill_style"></a>
+        </div>
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5178513a3840fa53"></script>
+        <!-- AddThis Button END -->
+      </div>
+  </div>
 <div id="wrap">
   <div class="container">
+
+    
+
+
+
     <div class="row">
       <div class="span12">
         <a href="{%url 'lists.views.latest' %}"><h1 class="text-center">Video Soup</h1></a>

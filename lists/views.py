@@ -5,8 +5,63 @@ from django.shortcuts import render_to_response
 from contentSubmit.models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from clickTracker.models import ClicksTracked 
+from django.db import connection
 
 CONTACTS_PER_PAGE = 5
+
+
+def mostViewed(request):
+	'''
+	get connection to database
+	get table with clicks
+	filter for label/category
+	show most viewed depending on label/category
+	show amount of clicks
+
+
+
+	Note: Attach the sum of clicks to the the model in
+	contentSubmit -> Post as additional column.
+	Research how this could be aggregated. Maybe directly in the model?
+	Or by referencing two the clickTracker_clickstracked table?
+	'''
+	
+	#Get the raw data
+	
+	'''
+	cursor = connection.cursor()
+	query = 'Select count(id) AS clicks, post_id as post from "clickTracker_clickstracked" GROUP BY post_id ORDER BY clicks DESC;'
+	cursor.execute(query)
+	results = cursor.fetchall()
+	'''
+	
+
+	'''
+	for item in results:
+		print 'clicks/postid', item[0], item[1]
+	'''
+
+	'''
+	Refactor database post model so that it also shows the amount of
+	clicks for eacht post, then sort desc by clicks, put that into category
+	and latest view to.
+
+
+
+	'''
+
+	print ClicksTracked.objects.count()
+
+
+	#Then select those ids from database
+
+
+
+	#Return the ranking
+
+
+	return HttpResponse(results)
 
 
 def category(request):

@@ -12,8 +12,8 @@ from os import environ
 import storages
 import boto
 
-PRODUCTION = True
-DEBUG = False
+PRODUCTION = False
+DEBUG = True
 
 ADMINS = (
     ('Carl Bednorz', 'carl.bednorz@gmail.com'),
@@ -37,10 +37,10 @@ if PRODUCTION == False:
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',#'django.db.backends.sqlite3', #'postgresql_psycopg2' # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
             'NAME': 'videosoup',                      # Or path to database file if using sqlite3. 
-            'USER': '',                      # Not used with sqlite3.
+            'USER': 'cb1754',                      # Not used with sqlite3.
             'PASSWORD': '',                  # Not used with sqlite3.
             'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+            'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
         }
     }
 

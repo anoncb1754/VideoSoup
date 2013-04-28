@@ -64,8 +64,8 @@
 	</div>
 
 	<div class='span9'>
-		<h3><a href="{%url 'clickTracker.views.clickTracker' %}?dst={{ post.link }}&id={{ post.id }}">{{ post.title }}</a></h3>
-		<span class="meta"><small>Posted <span class="post-date" title="{{ post.date_created|date:"D d M Y" }} {{ post.date_created|time:"TIME_FORMAT" }}">{{ post.date_created }} ago</span> by {{ post.user }} <a class="share btn btn-warning btn-mini"  rel="popover">Share</a> Labels: 
+		<h3><a href="{%url 'clickTracker.views.clickTracker' %}?dst={{ post.link }}&id={{ post.id }}" target="_blank">{{ post.title }}</a></h3>
+		<span class="meta"><small>Posted <span class="post-date" title="{{ post.date_created|date:"D d M Y" }} {{ post.date_created|time:"TIME_FORMAT" }}">{{ post.date_created }} ago</span> by {{ post.user }} <!--<a class="share btn btn-warning btn-mini"  rel="popover">Share</a>--> Labels: 
 			
 			{% for labels in label_set %}
 			<a class ='btn btn-inverse btn-mini' href="/label_search/?label={{ labels }}">{{ labels }}</a>
@@ -77,7 +77,7 @@
 </div>
 
 {% endfor %}
-
+<!--
 <script>
 var shareContent = '<div>Like it on Facebook: <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.videosoup.de&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;font=arial&amp;colorscheme=light&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:21px;" allowTransparency="true"></iframe></div><div><a class="close-share btn btn-link" onclick="$(&quot;.share&quot;).popover(&quot;hide&quot;);">Close</a></div>'
 
@@ -90,7 +90,7 @@ $('.share').popover({title: "Share this post!", content: shareContent, html: tru
 <script>
 $('.close-share').popover('destroy');
 </script>
-
+-->
 </br>
 </br>
 
@@ -99,7 +99,7 @@ $('.close-share').popover('destroy');
 	        <span class="step-links">
 	      
 	            {% if posts.has_previous %}
-	                <a href="?page={{ posts.previous_page_number }}&catid={{ catid }}&label={{ label }}">previous</a>
+	                <a href="?page={{ posts.previous_page_number }}&catid={{ catid }}&label={{ label }}" >previous</a>
 	            {% endif %}
 
 	            <span class="current">
