@@ -12,6 +12,7 @@ class Post(models.Model):
 	labels = models.CharField(max_length=255)
 	status = models.CharField(max_length=255)
 	date_created = models.DateTimeField()
+	clicks = models.PositiveIntegerField()
 
 	def __unicode__(self):
 		return self.title
@@ -20,4 +21,7 @@ class Post(models.Model):
 		#Save all labels in lowercase format
 		self.labels = self.labels.lower()
 		super(Post, self).save()
+
+
+	
 # Create your models here.

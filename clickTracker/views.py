@@ -6,26 +6,21 @@ from clickTracker.models import ClicksTracked
 from contentSubmit.models import Post
 
 def clickTracker(request):
-	'''
-	Does click tracking on post urls
-
-
-	Next: Drop table for click tracker and sync it again with new schema
-	'''
-
 	post_id = request.GET.get('id')
 	timestamp = datetime.now()
+	
+	post = Post.objects.get(id=post_id)
+	
 	try:
-		post = Post.objects.get(id=post_id)
-	except DatabaseError:
-		raise Http404	
-	try:
-		click = ClicksTracked(post=post, destination=post.link, timestamp=str(timestamp))
-		click.save()
+		raw_click = ClicksTracked(post=post, destination=post.link, timestamp=str(timestamp))
+		raw_click.save()
+		post.clicks+=1
+		post.save()
 	except DatabaseError:
 		raise Http404
 	try:
 		return HttpResponseRedirect(post.link)
 	except:
 		raise Http404
+	
 	

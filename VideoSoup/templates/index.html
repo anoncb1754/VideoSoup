@@ -65,7 +65,7 @@
 
 	<div class='span9'>
 		<h3><a href="{%url 'clickTracker.views.clickTracker' %}?id={{ post.id }}" target="_blank">{{ post.title }}</a></h3>
-		<span class="meta"><small>Posted <span class="post-date" title="{{ post.date_created|date:"D d M Y" }} {{ post.date_created|time:"TIME_FORMAT" }}">{{ post.date_created }} ago</span> by {{ post.user }} <!--<a class="share btn btn-warning btn-mini"  rel="popover">Share</a>--> Labels: 
+		<span class="meta"><small>Posted <span class="post-date" title="{{ post.date_created|date:"D d M Y" }} {{ post.date_created|time:"TIME_FORMAT" }}">{{ post.date_created }} ago</span> by {{ post.user }}, clicks: {{ post.clicks }}, <!--<a class="share btn btn-warning btn-mini"  rel="popover">Share</a>--> Labels: 
 			
 			{% for labels in label_set %}
 			<a class ='btn btn-inverse btn-mini' href="/label_search/?label={{ labels }}">{{ labels }}</a>

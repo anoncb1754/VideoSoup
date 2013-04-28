@@ -50,8 +50,11 @@ def mostViewed(request):
 
 
 	'''
+	post = Post.objects.get(id=2)
 
-	print ClicksTracked.objects.count()
+	print 'post', post
+
+	clicks = ClicksTracked.objects.filter(post_id=post.id).count()
 
 
 	#Then select those ids from database
@@ -61,7 +64,7 @@ def mostViewed(request):
 	#Return the ranking
 
 
-	return HttpResponse(results)
+	return HttpResponse(clicks)
 
 
 def category(request):
