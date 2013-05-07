@@ -8,63 +8,31 @@ from django.db.models import Q
 from clickTracker.models import ClicksTracked 
 from django.db import connection
 
-CONTACTS_PER_PAGE = 5
-
-
-def mostViewed(request):
-	'''
-	get connection to database
-	get table with clicks
-	filter for label/category
-	show most viewed depending on label/category
-	show amount of clicks
+CONTACTS_PER_PAGE = 20	
 
 
 
-	Note: Attach the sum of clicks to the the model in
-	contentSubmit -> Post as additional column.
-	Research how this could be aggregated. Maybe directly in the model?
-	Or by referencing two the clickTracker_clickstracked table?
-	'''
-	
-	#Get the raw data
-	
-	'''
-	cursor = connection.cursor()
-	query = 'Select count(id) AS clicks, post_id as post from "clickTracker_clickstracked" GROUP BY post_id ORDER BY clicks DESC;'
-	cursor.execute(query)
-	results = cursor.fetchall()
-	'''
-	
 
-	'''
-	for item in results:
-		print 'clicks/postid', item[0], item[1]
-	'''
+def mostClicked(request):
+	results = Post.objects.filter(status='Online').order_by('-clicks')
+	page = request.GET.get('page')
+	label_set = makeLabelSet(results)
+	paginator = Paginator(zip(results, label_set), CONTACTS_PER_PAGE)
 
-	'''
-	Refactor database post model so that it also shows the amount of
-	clicks for eacht post, then sort desc by clicks, put that into category
-	and latest view to.
+	sub_title = 'Meist geklickte Links'
 
+	try:
+		posts = paginator.page(page)
+	except PageNotAnInteger:
+		# If page is not an integer, deliver first page.
+		posts = paginator.page(1)
+	except EmptyPage:
+		# If page is out of range (e.g. 9999), deliver last page of results.
+		posts = paginator.page(paginator.num_pages)
+	return render_to_response('index.html', {'posts': posts,
+											'label_set': label_set,
+											'sub_title': sub_title})
 
-
-	'''
-	post = Post.objects.get(id=2)
-
-	print 'post', post
-
-	clicks = ClicksTracked.objects.filter(post_id=post.id).count()
-
-
-	#Then select those ids from database
-
-
-
-	#Return the ranking
-
-
-	return HttpResponse(clicks)
 
 
 def category(request):
@@ -86,6 +54,8 @@ def category(request):
 		results = Post.objects.filter(status='Online').order_by('-date_created').filter(labels__contains=label)
 	label_set = makeLabelSet(results)
 	paginator = Paginator(zip(results, label_set), CONTACTS_PER_PAGE)
+
+
 
 	try:
 		posts = paginator.page(page)
@@ -139,6 +109,8 @@ def filterByLabel(request):
 	results = Post.objects.filter(status='Online').order_by('-date_created').filter(labels__contains=label)
 	label_set = makeLabelSet(results)
 	paginator = Paginator(zip(results, label_set), CONTACTS_PER_PAGE)
+
+	print 'REQUEST', request.get_full_path()
 	try:
 		posts = paginator.page(page)
 	except PageNotAnInteger:

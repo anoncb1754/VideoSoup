@@ -22,10 +22,11 @@ urlpatterns = patterns('',
     (r'^category/$', list_views.category),
     (r'^my_posts/$', views.manageContent),
     (r'^ct/$', click_tracker.clickTracker),
+    (r'^most_clicked/$', list_views.mostClicked),
     (r'^impressum/$', misc_views.imprint),
     (r'^datenschutz/$', misc_views.privacyPolicy),
     (r'^agb/$', misc_views.AGB),
-    (r'^ct_test/$', list_views.mostViewed),
+
 
     # Examples:
     # url(r'^$', 'VideoSoup.views.home', name='home'),

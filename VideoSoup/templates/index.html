@@ -5,10 +5,10 @@
 
 
 <div class='row sub-nav '>
-	<div class ='span9 offset3'>
+	<div class ='span8 offset4'>
 		<ul class="nav nav-pills">
 	  		<li class='cat-all'>
-	    		<a href="{%url 'lists.views.latest' %}?catid=new_all">Neueste Videos</a>
+	    		<a href="{%url 'lists.views.latest' %}?catid=new_all">ALLE VIDEOS</a>
 	  		</li>
 	  		<li class='cat-zdf'>
 	  			<a href="{%url 'lists.views.category' %}?catid=ZDF">ZDF</a>
@@ -25,18 +25,33 @@
 	  		<li class='cat-sonstige'>
 	  			<a href="{%url 'lists.views.category' %}?catid=SONSTIGE">SONSTIGE</a>
 	  		</li>
+
 		</ul>
-	</div>
 </div>
 
 
 
 
 
+
 <div class='row locator'>
-	<div class ='span7 offset2'>
+	<div class ='span5 offset2'>
 		<p class="muted">Kategorie - {{ sub_title }}</p>
 	</div>
+	<div class="span3 offset2">
+		<ul class="inline">
+			<li>
+				<p class="muted">Filter:</p>
+			</li>
+			<li>
+				<a href="{%url 'lists.views.latest' %}">Neu</a>
+			</li>
+			<li>
+				<a href="{%url 'lists.views.mostClicked' %}">Meist gesehen</a>
+			</li>
+		</ul>
+	</div>
+	
 	<!--<div class ='span3'>
 		Sortiert nach:
 		<div class="btn-group">
@@ -52,6 +67,13 @@
 		</div>
 	</div>-->
 </div>
+<div class="row">
+	<div class="span11 offset1">
+		<ul class="nav nav-list">
+			<li class="divider"></li>
+		</ul>
+	</div>
+</div>
 
 
 
@@ -64,7 +86,7 @@
 	</div>
 
 	<div class='span9'>
-		<h3><a href="{%url 'clickTracker.views.clickTracker' %}?id={{ post.id }}" target="_blank">{{ post.title }}</a></h3>
+		<h3><a href="{%url 'clickTracker.views.clickTracker' %}?id={{ post.id }}" target="_blank" rel="nofollow">{{ post.title }}</a></h3>
 		<span class="meta"><small>Posted <span class="post-date" title="{{ post.date_created|date:"D d M Y" }} {{ post.date_created|time:"TIME_FORMAT" }}">{{ post.date_created }} ago</span> by {{ post.user }}, clicks: {{ post.clicks }}, <!--<a class="share btn btn-warning btn-mini"  rel="popover">Share</a>--> Labels: 
 			
 			{% for labels in label_set %}
