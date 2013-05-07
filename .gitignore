@@ -2,3 +2,4 @@
 *.sqlite
 *.pyc
 VideoSoup/static_stuff/*
+*.dump

@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /submit/
+Disallow: /signup/
+Disallow: /accounts/login/
+Disallow: /ct/
+Disallow: /impressum/
+Disallow: /datenschutz/
+Disallow: /agb/
+Disallow: /*.png$

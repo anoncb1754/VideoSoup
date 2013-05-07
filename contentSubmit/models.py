@@ -2,9 +2,7 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 
-'''
-@todo: just auto incremeny field for clicks
-'''
+
 class Post(models.Model):
 	user = models.ForeignKey(User)
 	title = models.CharField(max_length=255)

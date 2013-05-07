@@ -10,6 +10,9 @@ from django.db import connection
 
 CONTACTS_PER_PAGE = 20	
 
+'''
+Ok so far
+'''
 
 
 
